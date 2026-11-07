@@ -1,10 +1,12 @@
 /* ----------------HEADER--------------------- */
+html {
+    scroll-behavior: smooth;
+}
 
 header {
     display: flex;
-    background-color: #114B5F;
-    color: #b5dadf;
-
+    background-color: #02505d;
+    color: #f9fafb;
     flex-direction: column;
 }
 
@@ -31,24 +33,86 @@ header {
     padding: 50px 50px 50px 0px;
 }
 
-.navList {
+.navBanner {
+    background-color: #f26764;
+    width: 100%;
+    padding: 16px 0;
+    box-sizing: border-box;
+}
+
+/* .navList */
+/* .button-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+}
+
+.button-nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #00a59a;
+    color: #1e293b;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+} */
+
+/* .navList {
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
-
-/* h1 {
-    color: red;
 } */
 
+.navList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 900px;
+}
 
+.navList .btn {
+    display: inline-block;
+    background-color: #00a59a;
+    color: #fbf9f7;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.navList .btn:hover {
+    opacity: 0.9s;
+}
+
+/* h1, */
+h2,
+h3 {
+    color: #1e293b;
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+
+}
 
 /* -----------------MAIN-------------------- */
 
 
 body {
-    background-color: whitesmoke;
-    color: #114B5F;
+    background-color: #fbf9f7;
+    color: #475569;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -57,7 +121,8 @@ body {
 /* -----------------FOOTER------------------- */
 
 .footer {
-    background-color: #b5dadf;
+    background-color: #00a59a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 40px;
     display: flex;
     justify-content: center;
