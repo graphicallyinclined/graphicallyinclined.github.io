@@ -1,4 +1,6 @@
 /* ----------------HEADER--------------------- */
+/* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Raleway&display=swap'); */
+
 html {
     scroll-behavior: smooth;
 }
@@ -10,27 +12,100 @@ header {
     flex-direction: column;
 }
 
+.cursive {
+    font-family: "Great Vibes", cursive;
+    /* or "Pacifico" or "Parisienne" */
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 400;
+}
+
+/* Stack both words in the same spot */
+.intro {
+    display: grid;
+    place-items: center;
+    min-height: 200px;
+    max-width: 800px;
+    padding: 10px;
+}
+
+.intro>* {
+    grid-area: 1 / 1;
+    /* puts both h1s in the same grid cell */
+    margin: 0;
+}
+
+/* "Hello": writes itself, then fades out */
+.hello {
+    clip-path: inset(-10px 100% -10px 0);
+    animation:
+        write 2.5s ease-in-out forwards,
+        fade-out 1s ease 3.5s forwards;
+}
+
+/* Name: waits, then fades in */
+.name {
+    opacity: 0;
+    animation: fade-in 1s ease 4.5s forwards;
+
+    font-family: "Raleway", sans-serif;
+    font-size: clamp(3.5rem, 7.5vw, 5.5rem);
+    font-weight: 400;
+    /* or 400 if you want it lighter */
+}
+
+@keyframes write {
+    to {
+        clip-path: inset(-10px -10px -10px 0);
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Skip the animation for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .hello {
+        display: none;
+    }
+
+    .name {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 
 .centered {
     text-align: center;
 }
 
-.intro {
-    max-width: 600px;
-    text-align: left;
-    padding: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .profileInfo {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .profilePic {
-    width: 300px;
-    padding: 50px 50px 50px 0px;
+    width: min(300px, 80vw);
+    aspect-ratio: 1 / 1;
+    /* makes the box a perfect square */
+    object-fit: cover;
+    /* crops the photo to fill it instead of squishing it */
+    border-radius: 50%;
+    /* rounds the square into a circle */
+    margin: 30px 0;
+    /* replaces your padding */
+    border: 4px solid #f9fafb;
 }
 
 .navBanner {
@@ -40,7 +115,7 @@ header {
     box-sizing: border-box;
 }
 
-/* .navList */
+
 /* .button-nav ul {
     list-style: none;
     display: flex;
@@ -62,11 +137,11 @@ header {
     transition: all 0.2s ease;
 } */
 
-/* .navList {
+.navList {
     display: flex;
     align-items: center;
     justify-content: space-around;
-} */
+}
 
 .navList {
     list-style: none;
@@ -90,29 +165,37 @@ header {
 }
 
 .navList .btn:hover {
-    opacity: 0.9s;
+    opacity: 0.9;
 }
 
-/* h1, */
+
+/* h1 */
+
 h2,
 h3 {
     color: #1e293b;
+    font-family: raleway;
 }
 
 section {
-    padding: 80px 20px;
+    padding: 30px 60px;
     max-width: 800px;
     margin: 0 auto;
+    background-color: #fbf9f7;
+    font-family: raleway;
 
 }
 
 /* -----------------MAIN-------------------- */
+/* main {
 
+} */
 
 body {
-    background-color: #fbf9f7;
+    background-color: #00a59a;
     color: #475569;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: raleway;
+    margin: 0;
 }
 
 
@@ -122,7 +205,7 @@ body {
 
 .footer {
     background-color: #00a59a;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: raleway;
     padding: 40px;
     display: flex;
     justify-content: center;
