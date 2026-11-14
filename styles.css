@@ -23,6 +23,16 @@ header {
     background-size: 4px 4px;
 }
 
+.pageTitle h1 {
+    margin: 0;
+    padding: 80px 20px;
+    color: #fbf5ed;
+    font-family: "Lilita One", sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
 /* header {
     background-color: #022F7D;
     background-image: linear-gradient(135deg, #022F7D 0%, #027f73 50%, #00a59a 100%);
@@ -325,6 +335,7 @@ section {
     padding-bottom: 10px;
     font-family: "Raleway", sans-serif;
     font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem);
+    font-weight: 500;
     line-height: 1.7;
 }
 
@@ -352,6 +363,22 @@ section+section::before {
     /* centers it, with 30px of space below */
 }
 
+.aboutPhoto {
+    display: block;
+    /* puts the image on its own line below the text */
+    max-width: 100%;
+    /* never wider than the section */
+    height: auto;
+    /* keeps the proportions */
+    margin: 24px auto 0;
+    /* space above it, and centered */
+    border-radius: 8px;
+    /* soft corners; remove if you want sharp ones */
+}
+
+.smallPhoto {
+    max-width: 500px;
+}
 
 /* -----------------MAIN-------------------- */
 /* main {
@@ -390,6 +417,8 @@ main {
             rgb(var(--block-rgb) / 1) var(--fade),
             rgb(var(--block-rgb) / 1) calc(100% - var(--fade)),
             rgb(var(--block-rgb) / 0));
+    flex: 1;
+    width: 100%;
 }
 
 
@@ -398,13 +427,136 @@ body {
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
         url(images/andres-siimon-BL9op_atKxg-unsplash.jpg);
-    background-size: 50%;
     color: #1e293b;
-    font-family: raleway;
+    font-family: "Raleway", sans-serif;
     margin: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+.photoRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
 
+.photoRow figure {
+    flex: 1 1 200px;
+    /* each photo and caption shares the row evenly */
+    margin: 0;
+    /* removes the browser's default figure margin */
+    text-align: center;
+}
+
+.photoRow img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.photoRow figcaption {
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+/* .photoRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.photoRow figure {
+    width: 100%;
+    max-width: 600px;
+    margin: 0;
+    text-align: center;
+}
+
+.photoRow img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.photoRow figcaption {
+    margin-top: 8px;
+    font-size: 0.95rem;
+} */
+
+
+
+
+
+/* .socialLinks {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px;
+    padding: 20px 20px;
+} */
+
+/* .socialLinks {
+       list-style: none;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       gap: 12px;
+       padding: 0;
+   }
+
+   .socialLinks a {
+       display: inline-block;
+       padding: 8px 18px;
+       border-radius: 999px;
+       background-color: #022f7d;
+       color: #fbf5ed;
+       text-decoration: none;
+   } */
+
+
+.socialLinks {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.socialLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-color: #022f7d;
+    /* your dark blue */
+    border-radius: 6px;
+    /* use 0 for sharp corners */
+    transition: opacity 0.2s ease;
+}
+
+.socialLinks a:hover {
+    opacity: 0.85;
+}
+
+.socialLinks img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
 
 
 /* -----------------FOOTER------------------- */
@@ -428,7 +580,6 @@ body {
 @media (max-width: 700px) {
     :root {
         --fade: 16px;
-        /* much narrower fade on phones */
     }
 }
 
@@ -438,4 +589,13 @@ body {
 
 .navBanner {
     padding: 12px 0;
+}
+
+@media (max-width: 700px) {
+    .aboutPhoto {
+        float: none;
+        display: block;
+        max-width: 100%;
+        margin: 24px auto 0;
+    }
 }
