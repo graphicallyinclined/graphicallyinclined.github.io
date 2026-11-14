@@ -56,7 +56,7 @@ header {
 .cursive {
     font-family: "Great Vibes", cursive;
     /* or "Pacifico" or "Parisienne" */
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 400;
 }
 
@@ -66,7 +66,8 @@ header {
     min-height: 200px;
     max-width: 800px;
     padding: 10px;
-    flex: 1 1 320px;            /* grows to fill space, wraps below the picture when narrow */
+    flex: 0 1 auto;
+    /* grows to fill space, wraps below the picture when narrow */
 }
 
 .intro>* {
@@ -75,28 +76,43 @@ header {
     margin: 0;
 }
 
-/* "Hello": writes itself, then fades out */
-.hello {
+/* "Hello": writes itself, then fades out -- For Option 1*/
+/* .hello {
     clip-path: inset(-10px 100% -10px 0);
     animation:
         write 2.5s ease-in-out forwards,
         fade-out 1s ease 3.5s forwards;
+} */
+
+.hello {
+    animation: hello-cycle 12s ease-in-out infinite;
 }
 
-/* Name: waits, then fades in */
-.name {
+/* Name: waits, then fades in --For Option 1 */
+/* .name {
     opacity: 0;
     animation: fade-in 1s ease 4.5s forwards;
 
     color: #fbf5ed;
     font-family: "Lilita One";
-    font-size: clamp(3.5rem, 7.5vw, 5.5rem);
+    font-size: clamp(2.5rem, 7.5vw, 5.5rem);
     font-weight: 400;
     letter-spacing: 2px;
-    /* or 400 if you want it lighter */
+} */
+
+.name {
+    opacity: 0;
+    animation: name-cycle 12s ease-in-out infinite;
+
+    color: #fbf5ed;
+    font-family: "Lilita One";
+    font-size: clamp(2.5rem, 7.5vw, 5.5rem);
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 
-@keyframes write {
+/* For Option 1 */
+/* @keyframes write {
     to {
         clip-path: inset(-10px -10px -10px 0);
     }
@@ -112,6 +128,65 @@ header {
     to {
         opacity: 1;
     }
+} */
+
+@keyframes hello-cycle {
+    0% {
+        clip-path: inset(-10px 100% -10px 0);
+        opacity: 1;
+    }
+
+    /* hidden, ready to write */
+    25% {
+        clip-path: inset(-10px -10px -10px 0);
+        opacity: 1;
+    }
+
+    /* fully written (3s) */
+    35% {
+        clip-path: inset(-10px -10px -10px 0);
+        opacity: 1;
+    }
+
+    /* holds (4.2s) */
+    45% {
+        clip-path: inset(-10px -10px -10px 0);
+        opacity: 0;
+    }
+
+    /* faded out (5.4s) */
+    100% {
+        clip-path: inset(-10px -10px -10px 0);
+        opacity: 0;
+    }
+
+    /* stays hidden */
+}
+
+@keyframes name-cycle {
+
+    0%,
+    45% {
+        opacity: 0;
+    }
+
+    /* waits for Hello to disappear */
+    55% {
+        opacity: 1;
+    }
+
+    /* fades in (6.6s) */
+    90% {
+        opacity: 1;
+    }
+
+    /* holds until 10.8s */
+    98%,
+    100% {
+        opacity: 0;
+    }
+
+    /* fades out, then the loop restarts */
 }
 
 /* Skip the animation for visitors who prefer reduced motion */
@@ -133,10 +208,11 @@ header {
 
 .profileInfo {
     display: flex;
-    flex-wrap: wrap;            /* lets the text drop below the picture on small screens */
+    flex-wrap: wrap;
+    /* lets the text drop below the picture on small screens */
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     color: #fbf5ed;
 }
 
@@ -185,7 +261,8 @@ header {
 .navList {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;            /* buttons flow onto a second row instead of overflowing */
+    flex-wrap: wrap;
+    /* buttons flow onto a second row instead of overflowing */
     justify-content: center;
     gap: 12px 16px;
     margin: 0 auto;
@@ -193,7 +270,7 @@ header {
     max-width: 900px;
 }
 
-.navList .btn {
+/* .navList .btn {
     display: inline-block;
     background-color: #022f7d;
     color: #fbf5ed;
@@ -202,6 +279,20 @@ header {
     border-radius: 6px;
     font-weight: bold;
     font-size: clamp(0.9rem, 2.5vw, 1rem);
+    transition: opacity 0.2s ease;
+} */
+
+.navList .btn {
+    display: inline-block;
+    background-color: #022f7d;
+    color: #fbf5ed;
+    padding: 12px 22px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    /* grows with the screen, between 1rem and 1.2rem */
     transition: opacity 0.2s ease;
 }
 
@@ -212,44 +303,93 @@ header {
 
 /* h1 */
 
-h2,
-h3 {
-    color: #1e293b;
+h2 {
+    color: #022f7d;
     font-family: raleway;
 }
+
+h3 {
+    color: #006b63;
+    font-family: raleway;
+}
+
+/* section {
+    padding: 30px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: raleway;
+} */
 
 section {
-    padding: 30px 60px;
-    max-width: 840px;    /* keeps text lines a comfortable length */
-    margin: 0 auto;      /* centers the text inside the wider block */
-    font-family: raleway;
+    padding: clamp(30px, 5vw, 60px) calc(var(--fade) + clamp(20px, 7vw, 100px));
+    padding-bottom: 10px;
+    font-family: "Raleway", sans-serif;
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem);
+    line-height: 1.7;
 }
 
-section:first-child { padding-top: 20px; }
-section:last-child  { padding-bottom: 20px; }
+section:first-child {
+    padding-top: 20px;
+}
 
+section:last-child {
+    padding-bottom: 20px;
+}
+
+section+section {
+    margin-top: 10px;
+}
+
+section+section::before {
+    content: "";
+    display: block;
+    width: 450px;
+    /* how long the line is */
+    height: 3px;
+    /* how thick it is */
+    background-color: rgba(0, 165, 154, 0.15);
+    margin: 0 auto 30px;
+    /* centers it, with 30px of space below */
+}
 
 
 /* -----------------MAIN-------------------- */
-main {
+/* main {
     max-width: 1350px;
     margin: 0 auto;
     padding: 0;
     background: linear-gradient(to right,
-        rgba(251, 245, 237, 0)    0,
-        rgba(251, 245, 237, 0.07) 30px,
-        rgba(251, 245, 237, 0.26) 60px,
-        rgba(251, 245, 237, 0.5)  90px,
-        rgba(251, 245, 237, 0.74) 120px,
-        rgba(251, 245, 237, 0.93) 150px,
-        rgba(251, 245, 237, 1)    180px,
-        rgba(251, 245, 237, 1)    calc(100% - 180px),
-        rgba(251, 245, 237, 0.93) calc(100% - 150px),
-        rgba(251, 245, 237, 0.74) calc(100% - 120px),
-        rgba(251, 245, 237, 0.5)  calc(100% - 90px),
-        rgba(251, 245, 237, 0.26) calc(100% - 60px),
-        rgba(251, 245, 237, 0.07) calc(100% - 30px),
-        rgba(251, 245, 237, 0)    100%);
+            rgba(251, 245, 237, 0) 0,
+            rgba(251, 245, 237, 0.07) 30px,
+            rgba(251, 245, 237, 0.26) 60px,
+            rgba(251, 245, 237, 0.5) 90px,
+            rgba(251, 245, 237, 0.74) 120px,
+            rgba(251, 245, 237, 0.93) 150px,
+            rgba(251, 245, 237, 1) 180px,
+            rgba(251, 245, 237, 1) calc(100% - 180px),
+            rgba(251, 245, 237, 0.93) calc(100% - 150px),
+            rgba(251, 245, 237, 0.74) calc(100% - 120px),
+            rgba(251, 245, 237, 0.5) calc(100% - 90px),
+            rgba(251, 245, 237, 0.26) calc(100% - 60px),
+            rgba(251, 245, 237, 0.07) calc(100% - 30px),
+            rgba(251, 245, 237, 0) 100%);
+} */
+:root {
+    --block-rgb: 255 255 255;
+    /* keep whatever color you chose */
+    --fade: 80px;
+    /* fade width on large screens */
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background: linear-gradient(to right,
+            rgb(var(--block-rgb) / 0),
+            rgb(var(--block-rgb) / 1) var(--fade),
+            rgb(var(--block-rgb) / 1) calc(100% - var(--fade)),
+            rgb(var(--block-rgb) / 0));
 }
 
 
@@ -259,7 +399,7 @@ body {
         linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
         url(images/andres-siimon-BL9op_atKxg-unsplash.jpg);
     background-size: 50%;
-    color: #475569;
+    color: #1e293b;
     font-family: raleway;
     margin: 0;
 }
@@ -277,4 +417,25 @@ body {
     justify-content: center;
     align-items: center;
     gap: 30px;
+}
+
+/* @media (max-width: 700px) {
+    .profilePic {
+        width: min(220px, 60vw);
+        margin: 20px 0 0;
+    } */
+
+@media (max-width: 700px) {
+    :root {
+        --fade: 16px;
+        /* much narrower fade on phones */
+    }
+}
+
+.intro {
+    min-height: 140px;
+}
+
+.navBanner {
+    padding: 12px 0;
 }
