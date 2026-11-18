@@ -323,6 +323,36 @@ h3 {
     font-family: raleway;
 }
 
+.workPage h3 {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.workPage p {
+    margin-bottom: 50px;
+}
+
+/* Numbered items: bold, with space before the next one */
+.spacedList>li {
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+/* Bulleted descriptions: regular weight, a little space below the title */
+.spacedList ul {
+    margin-top: 8px;
+}
+
+.spacedList ul li {
+    font-weight: 400;
+}
+
+/* No extra space after the very last item */
+.spacedList>li:last-child {
+    margin-bottom: 0;
+}
+
 /* section {
     padding: 30px 60px;
     max-width: 900px;
@@ -378,6 +408,7 @@ section+section::before {
 
 .smallPhoto {
     max-width: 500px;
+    padding-bottom: 50px;
 }
 
 /* -----------------MAIN-------------------- */
@@ -426,7 +457,7 @@ body {
     background-color: #00a59a;
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
-        url(images/andres-siimon-BL9op_atKxg-unsplash.jpg);
+        url(images/brickWall.jpg);
     color: #1e293b;
     font-family: "Raleway", sans-serif;
     margin: 0;
@@ -524,6 +555,26 @@ body {
        text-decoration: none;
    } */
 
+   .contactMe h2 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+   }
+
+   .arrowDown {
+    text-align: center;
+    color: #022f7d;                 /* the arrow takes this color */
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arrowDown { animation: none; }
+}
 
 .socialLinks {
     list-style: none;
